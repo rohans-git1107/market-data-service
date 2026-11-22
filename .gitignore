@@ -18,3 +18,5 @@ data/
 # Test cache
 .pytest_cache/
 .DS_Store
+
+*.csv

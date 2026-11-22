@@ -18,7 +18,7 @@ SYMBOL = "btcusdt"
 URL = f"wss://stream.binance.com:9443/ws/{SYMBOL}@trade"
 WINDOW_SIZE = 1000        # number of most recent trades kept
 LOG_INTERVAL_S = 1.0      # write at most one feature row per second
-CSV_PATH = "features.csv"
+CSV_PATH = "data/features.csv"
 FIELDS = [
     "time_ms", "last_price", "vwap",
     "price_vs_vwap", "imbalance", "volume_rate",
@@ -58,6 +58,7 @@ async def stream_once(writer, csv_file):
 
 
 async def main():
+    os.makedirs("data", exist_ok=True)
     is_new_file = not os.path.exists(CSV_PATH) or os.path.getsize(CSV_PATH) == 0
     with open(CSV_PATH, "a", newline="") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=FIELDS)
