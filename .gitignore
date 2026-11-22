@@ -8,3 +8,12 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Logged market data
+data/
+
+# Secrets (in case of API keys)
+.env
+
+# Test cache
+.pytest_cache/
